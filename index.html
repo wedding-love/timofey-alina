@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -71,7 +72,7 @@
     .music-text { font-size: 18px; letter-spacing: 2px; margin-top: 12px; color: #2c2c2c; animation: blinkSoft 1.2s infinite; }
     @keyframes blinkSoft { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
     
-    /* Детские фото — в одну строку без прокрутки, увеличенная рамка */
+    /* Детские фото */
     .story { background: #ffffff; text-align: center; }
     .photos {
       display: flex;
@@ -112,7 +113,7 @@
     .title { font-size: 28px; margin: 20px 0 16px; font-weight: 400; }
     .text { max-width: 560px; margin: 0 auto; font-size: 17px; line-height: 1.7; color: #3e3e3e; }
     
-    /* Родные и любимые — фото невесты без обрезки лица */
+    /* Родные и любимые */
     .invite-block { background: #ffffff; text-align: center; }
     .frame {
       background: #fff;
@@ -179,20 +180,6 @@
     .dresscode-section h2, .details-section h2 { font-size: 40px; margin-bottom: 12px; font-weight: 400; }
     .subtitle { font-size: 26px; color: #a0a0a0; margin-bottom: 28px; }
     .dresscode-section p, .details-section p { font-size: 17px; line-height: 1.7; margin-bottom: 20px; }
-    
-    /* Слайдер (если понадобится) */
-    .slider-section { background: #ffffff; max-width: 900px; margin: 0 auto; padding: 60px 20px; }
-    .slider-container { position: relative; overflow: hidden; border-radius: 20px; box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
-    .slider-wrapper { display: flex; transition: transform 0.4s ease; }
-    .slide { flex: 0 0 100%; }
-    .slide img { width: 100%; height: 480px; object-fit: cover; }
-    .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.4); color: white; border: none; font-size: 28px; padding: 8px 16px; cursor: pointer; border-radius: 50%; transition: 0.2s; }
-    .slider-btn:hover { background: rgba(0,0,0,0.7); }
-    .btn-prev { left: 20px; }
-    .btn-next { right: 20px; }
-    .slider-dots { text-align: center; margin-top: 20px; }
-    .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #ccc; margin: 0 6px; cursor: pointer; }
-    .dot.active { background: #8fa3b1; width: 12px; height: 12px; }
     
     /* Таймер на полный экран */
     .wedding-block {
@@ -273,6 +260,7 @@
     .love { font-style: italic; margin-bottom: 12px; font-size: 18px; }
     .names-sign { font-size: 44px; text-transform: capitalize; font-weight: 400; }
     
+    /* --- RSVP --- */
     .rsvp { background: #c7b09b; color: #fff; text-align: center; }
     .rsvp .container { max-width: 580px; margin: 0 auto; }
     .rsvp h2 { font-size: 44px; margin-bottom: 10px; font-weight: 400; }
@@ -293,9 +281,42 @@
       font-weight: 300;
     }
     .rsvp input::placeholder { color: rgba(255,255,255,0.6); font-weight: 300; }
+
+    /* Улучшенные радио‑кнопки с визуальным выделением */
     .radio-group { margin: 15px 0 10px; }
-    .radio-group label { display: flex; align-items: center; gap: 12px; font-size: 16px; font-weight: normal; margin: 12px 0; }
-    .radio-group input[type="radio"] { accent-color: #fff; width: 18px; height: 18px; }
+    .radio-group label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 18px;
+      font-weight: 400;
+      margin: 12px 0;
+      padding: 12px 20px;
+      border-radius: 50px;
+      border: 1px solid transparent;
+      background: transparent;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+    /* Стиль для выбранного варианта (добавляется через JS) */
+    .radio-group label.checked {
+      background: rgba(255, 255, 255, 0.25);
+      border-color: #ffffff;
+      box-shadow: 0 0 0 1px #ffffff, 0 4px 12px rgba(0,0,0,0.1);
+      font-weight: 500;
+    }
+    /* Увеличиваем радио-кружок для лучшей видимости */
+    .radio-group input[type="radio"] {
+      accent-color: #ffffff;
+      width: 20px;
+      height: 20px;
+      margin-right: 4px;
+    }
+    /* При наведении */
+    .radio-group label:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
     .rsvp button {
       width: 100%;
       margin-top: 40px;
@@ -462,8 +483,12 @@
       
       <label>Сможете ли Вы присутствовать</label>
       <div class="radio-group">
-        <label><input type="radio" name="attend" value="Да, смогу" required> Да, смогу</label>
-        <label><input type="radio" name="attend" value="Нет, не смогу"> Нет, не смогу</label>
+        <label>
+          <input type="radio" name="attend" value="Да, смогу" required> Да, смогу
+        </label>
+        <label>
+          <input type="radio" name="attend" value="Нет, не смогу"> Нет, не смогу
+        </label>
       </div>
       
       <label>Если Вы придете с парой или семьей, то впишите все имена</label>
@@ -489,79 +514,106 @@
 </section>
 
 <script>
-  const audio = document.getElementById('weddingAudio');
-  const toggleBtn = document.getElementById('musicToggleBtn');
-  function updateButtonIcon() {
-    toggleBtn.innerHTML = audio.paused ? '<i class="fas fa-play"></i>' : '<i class="fas fa-pause"></i>';
-  }
-  toggleBtn.addEventListener('click', () => {
-    if (audio.paused) audio.play().catch(e => console.warn('Автовоспроизведение заблокировано браузером'));
-    else audio.pause();
-    updateButtonIcon();
-  });
-  updateButtonIcon();
-  audio.addEventListener('ended', () => { if (audio.loop) audio.play(); });
-
-  const weddingDate = new Date("2026-05-14T00:00:00").getTime();
-  function updateWeddingTimer() {
-    const now = new Date().getTime();
-    const diff = weddingDate - now;
-    if (diff <= 0) {
-      document.getElementById("weddingDays").innerText = "0";
-      document.getElementById("weddingHours").innerText = "0";
-      document.getElementById("weddingMinutes").innerText = "0";
-      document.getElementById("weddingSeconds").innerText = "0";
-      return;
+  (function() {
+    // --- МУЗЫКА ---
+    const audio = document.getElementById('weddingAudio');
+    const toggleBtn = document.getElementById('musicToggleBtn');
+    function updateButtonIcon() {
+      toggleBtn.innerHTML = audio.paused ? '<i class="fas fa-play"></i>' : '<i class="fas fa-pause"></i>';
     }
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((diff / (1000 * 60)) % 60);
-    const seconds = Math.floor((diff / 1000) % 60);
-    document.getElementById("weddingDays").innerText = days;
-    document.getElementById("weddingHours").innerText = hours < 10 ? "0"+hours : hours;
-    document.getElementById("weddingMinutes").innerText = minutes < 10 ? "0"+minutes : minutes;
-    document.getElementById("weddingSeconds").innerText = seconds < 10 ? "0"+seconds : seconds;
-  }
-  setInterval(updateWeddingTimer, 1000);
-  updateWeddingTimer();
-
-  function buildCalendar(year, month, highlightDay) {
-    const firstDayOfMonth = new Date(year, month, 1);
-    let startWeekday = firstDayOfMonth.getDay();
-    let startOffset = (startWeekday === 0 ? 6 : startWeekday - 1);
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-    const daysArray = [];
-    for (let i = 0; i < startOffset; i++) daysArray.push('');
-    for (let d = 1; d <= daysInMonth; d++) daysArray.push(d);
-    const container = document.getElementById('dynamicCalendarDays');
-    container.innerHTML = '';
-    daysArray.forEach(day => {
-      const span = document.createElement('span');
-      if (day === '') {
-        span.textContent = '';
-      } else if (day === highlightDay) {
-        const heartDiv = document.createElement('div');
-        heartDiv.className = 'heart-number';
-        heartDiv.innerHTML = '<i class="fas fa-heart"></i><span>' + day + '</span>';
-        span.appendChild(heartDiv);
-      } else {
-        span.textContent = day;
-      }
-      container.appendChild(span);
+    toggleBtn.addEventListener('click', () => {
+      if (audio.paused) audio.play().catch(e => console.warn('Автовоспроизведение заблокировано'));
+      else audio.pause();
+      updateButtonIcon();
     });
-  }
-  buildCalendar(2026, 4, 14);
+    updateButtonIcon();
+    audio.addEventListener('ended', () => { if (audio.loop) audio.play(); });
 
-  const animatedElements = document.querySelectorAll('.fade-text, .fade-img');
-  const appearObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('appear');
-        appearObserver.unobserve(entry.target);
+    // --- ТАЙМЕР ---
+    const weddingDate = new Date("2026-05-14T00:00:00").getTime();
+    function updateWeddingTimer() {
+      const now = new Date().getTime();
+      const diff = weddingDate - now;
+      if (diff <= 0) {
+        document.getElementById("weddingDays").innerText = "0";
+        document.getElementById("weddingHours").innerText = "0";
+        document.getElementById("weddingMinutes").innerText = "0";
+        document.getElementById("weddingSeconds").innerText = "0";
+        return;
       }
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+      document.getElementById("weddingDays").innerText = days;
+      document.getElementById("weddingHours").innerText = hours < 10 ? "0"+hours : hours;
+      document.getElementById("weddingMinutes").innerText = minutes < 10 ? "0"+minutes : minutes;
+      document.getElementById("weddingSeconds").innerText = seconds < 10 ? "0"+seconds : seconds;
+    }
+    setInterval(updateWeddingTimer, 1000);
+    updateWeddingTimer();
+
+    // --- КАЛЕНДАРЬ ---
+    function buildCalendar(year, month, highlightDay) {
+      const firstDayOfMonth = new Date(year, month, 1);
+      let startWeekday = firstDayOfMonth.getDay();
+      let startOffset = (startWeekday === 0 ? 6 : startWeekday - 1);
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      const daysArray = [];
+      for (let i = 0; i < startOffset; i++) daysArray.push('');
+      for (let d = 1; d <= daysInMonth; d++) daysArray.push(d);
+      const container = document.getElementById('dynamicCalendarDays');
+      container.innerHTML = '';
+      daysArray.forEach(day => {
+        const span = document.createElement('span');
+        if (day === '') {
+          span.textContent = '';
+        } else if (day === highlightDay) {
+          const heartDiv = document.createElement('div');
+          heartDiv.className = 'heart-number';
+          heartDiv.innerHTML = '<i class="fas fa-heart"></i><span>' + day + '</span>';
+          span.appendChild(heartDiv);
+        } else {
+          span.textContent = day;
+        }
+        container.appendChild(span);
+      });
+    }
+    buildCalendar(2026, 4, 14);
+
+    // --- АНИМАЦИЯ ПОЯВЛЕНИЯ ---
+    const animatedElements = document.querySelectorAll('.fade-text, .fade-img');
+    const appearObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('appear');
+          appearObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2, rootMargin: "0px 0px -20px 0px" });
+    animatedElements.forEach(el => appearObserver.observe(el));
+
+    // --- ВИЗУАЛЬНОЕ ВЫДЕЛЕНИЕ ВЫБРАННОГО ВАРИАНТА В RSVP ---
+    const attendRadios = document.querySelectorAll('input[name="attend"]');
+    
+    function updateRadioHighlight() {
+      // Снимаем класс checked со всех label внутри radio-group
+      document.querySelectorAll('.radio-group label').forEach(l => l.classList.remove('checked'));
+      // Находим выбранный radio и добавляем класс его родительскому label
+      const selected = document.querySelector('input[name="attend"]:checked');
+      if (selected) {
+        selected.closest('label').classList.add('checked');
+      }
+    }
+    
+    // Слушаем изменения
+    attendRadios.forEach(radio => {
+      radio.addEventListener('change', updateRadioHighlight);
     });
-  }, { threshold: 0.2, rootMargin: "0px 0px -20px 0px" });
-  animatedElements.forEach(el => appearObserver.observe(el));
+    
+    // Инициализация при загрузке (если вдруг какая-то radio выбрана по умолчанию)
+    updateRadioHighlight();
+  })();
 </script>
 </body>
 </html>
