@@ -215,15 +215,16 @@
       z-index: 1;
     }
     .wedding-block .content {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      padding: 50px 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      height: 100%;
-    }
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 50px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;    /* было space-between */
+  height: 100%;
+}
+
     .wedding-block h1 {
       margin-top: 30px;
       font-size: clamp(32px, 7vw, 48px);
@@ -232,13 +233,16 @@
       text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
     }
     .wedding-block .timer {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin-bottom: 50px;
-      flex-wrap: wrap;
-    }
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 0;           /* убрать лишний отступ */
+  flex-wrap: wrap;
+  flex: 1;                   /* растягивает блок, занимая доступное место */
+  align-items: center;       /* вертикальное центрирование внутри таймера */
+}
+
     .wedding-block .timer div {
       text-align: center;
       background: none;
