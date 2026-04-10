@@ -71,14 +71,14 @@
     .music-text { font-size: 18px; letter-spacing: 2px; margin-top: 12px; color: #2c2c2c; animation: blinkSoft 1.2s infinite; }
     @keyframes blinkSoft { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
     
-    /* Детские фото — всегда в одну строку без прокрутки */
+    /* Детские фото — всегда в одну строку, без прокрутки, чуть крупнее */
     .story { background: #ffffff; text-align: center; }
     .photos {
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 5vw;
-      flex-wrap: wrap;          /* на случай очень маленьких экранов — всё равно в строку */
+      flex-wrap: wrap;          /* резерв для очень узких экранов, но в строку */
       margin-bottom: 45px;
     }
     .photo {
@@ -88,8 +88,8 @@
       flex: 0 0 auto;
     }
     .photo img {
-      width: 35vw;
-      max-width: 260px;
+      width: 40vw;
+      max-width: 300px;         /* немного увеличено */
       height: auto;
       aspect-ratio: 1/1;
       object-fit: cover;
@@ -309,8 +309,9 @@
     }
     .rsvp button:hover { background: #fff; color: #c7b09b; }
     
+    /* Адаптивность */
     @media (max-width: 680px) {
-      .photo img { max-width: 200px; }
+      .photo img { max-width: 260px; }
       .frame img { width: 220px; height: 280px; }
       .polaroid-card img { width: 140px; height: 140px; }
       .slide img { height: 320px; }
@@ -323,7 +324,7 @@
       .time { font-size: 28px; }
     }
     @media (max-width: 480px) {
-      .photo img { max-width: 160px; }
+      .photo img { width: 45vw; max-width: 220px; }
       .frame img { width: 180px; height: 240px; }
       .polaroid-card img { width: 120px; height: 120px; }
       .wedding-block .timer span { font-size: 32px; }
@@ -332,7 +333,7 @@
       .heart-number { width: 38px; height: 38px; }
       .heart-number i { font-size: 38px; }
       .heart-number span { font-size: 18px; }
-      .photos { gap: 8vw; }
+      .photos { gap: 6vw; }
     }
   </style>
 </head>
@@ -425,8 +426,6 @@
   <h2 class="fade-text">ДРЕСС - КОД</h2>
   <div class="subtitle fade-text">dress-code</div>
   <p class="fade-text">Мы будем рады, если вы поддержите атмосферу нашего дня, выбрав наряды в спокойных, благородных оттенках.</p>
-  <p class="fade-text">Палитра вечера — нежные пастельные тона, приглушённые бежевые, серые, пыльно-розовые и кремовые цвета. Никакой кричащей яркости, только мягкая элегантность.</p>
-  <p class="fade-text">И конечно, захватите с собой удобную обувь для танцев — будет много музыки и веселья!</p>
 </section>
 
 <section class="details-section">
