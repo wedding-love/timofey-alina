@@ -171,10 +171,19 @@
     .timing h2 { font-size: 44px; font-weight: 400; }
     .timing .sub { font-size: 32px; margin-bottom: 45px; opacity: 0.9; }
     .timeline { display: flex; flex-direction: column; gap: 50px; }
-    .item { max-width: 340px; margin: auto; }
+    .item { max-width: 400px; margin: auto; }
     .icon { font-size: 48px; margin-bottom: 12px; color: #fff; }
     .time { font-size: 32px; font-weight: 400; margin-bottom: 8px; }
     .timing .title { font-size: 22px; font-weight: 500; }
+    .timing .note-transfer {
+      margin-top: 12px;
+      font-size: 16px;
+      opacity: 0.9;
+      max-width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+      font-style: italic;
+    }
     
     .dresscode-section, .details-section { background: #ffffff; text-align: center; max-width: 800px; margin: 0 auto; padding: 60px 20px; }
     .dresscode-section h2, .details-section h2 { font-size: 40px; margin-bottom: 12px; font-weight: 400; }
@@ -282,7 +291,6 @@
     }
     .rsvp input::placeholder { color: rgba(255,255,255,0.6); font-weight: 300; }
 
-    /* Улучшенные радио‑кнопки с визуальным выделением */
     .radio-group { margin: 15px 0 10px; }
     .radio-group label {
       display: flex;
@@ -298,21 +306,18 @@
       transition: all 0.25s ease;
       cursor: pointer;
     }
-    /* Стиль для выбранного варианта (добавляется через JS) */
     .radio-group label.checked {
       background: rgba(255, 255, 255, 0.25);
       border-color: #ffffff;
       box-shadow: 0 0 0 1px #ffffff, 0 4px 12px rgba(0,0,0,0.1);
       font-weight: 500;
     }
-    /* Увеличиваем радио-кружок для лучшей видимости */
     .radio-group input[type="radio"] {
       accent-color: #ffffff;
       width: 20px;
       height: 20px;
       margin-right: 4px;
     }
-    /* При наведении */
     .radio-group label:hover {
       background: rgba(255, 255, 255, 0.1);
     }
@@ -347,6 +352,7 @@
       .invite { font-size: 22px; }
       .timer div { min-width: 60px; }
       .time { font-size: 28px; }
+      .timing .note-transfer { font-size: 15px; }
     }
     @media (max-width: 480px) {
       .photo { padding: 12px 12px 18px 12px; }
@@ -424,6 +430,7 @@
       <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
       <div class="time">15:00</div>
       <div class="title">Сбор гостей на площадке</div>
+      <div class="note-transfer">Для удобства будет организован трансфер.<br>О времени и месте сообщим дополнительно.</div>
     </div>
     <div class="item fade-text">
       <div class="icon"><i class="fas fa-ring"></i></div>
@@ -458,6 +465,12 @@
   <h2 class="fade-text">ДЕТАЛИ</h2>
   <div class="subtitle fade-text">details</div>
   <p class="fade-text">Никакой суеты и торжественных речей. Только близкие люди, без которых мы не представляем этот день, атмосфера наполненная любовью и много веселья!</p>
+  <p class="fade-text" style="margin-top: 30px; font-style: italic;">
+    Если Вы планировали порадовать нас букетом — не спешите!<br>
+    Нам куда приятнее будет получить бутылочку вашего любимого напитка.<br>
+    Так у нас появится вкусная коллекция на семейные вечера —<br>
+    и прекрасный повод вспоминать о вас с улыбкой!
+  </p>
 </section>
 
 <section class="wedding-block">
@@ -597,21 +610,17 @@
     const attendRadios = document.querySelectorAll('input[name="attend"]');
     
     function updateRadioHighlight() {
-      // Снимаем класс checked со всех label внутри radio-group
       document.querySelectorAll('.radio-group label').forEach(l => l.classList.remove('checked'));
-      // Находим выбранный radio и добавляем класс его родительскому label
       const selected = document.querySelector('input[name="attend"]:checked');
       if (selected) {
         selected.closest('label').classList.add('checked');
       }
     }
     
-    // Слушаем изменения
     attendRadios.forEach(radio => {
       radio.addEventListener('change', updateRadioHighlight);
     });
     
-    // Инициализация при загрузке (если вдруг какая-то radio выбрана по умолчанию)
     updateRadioHighlight();
   })();
 </script>
