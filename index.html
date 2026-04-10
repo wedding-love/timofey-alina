@@ -8,6 +8,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
+
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Montserrat', sans-serif;
@@ -71,25 +73,25 @@
     .music-text { font-size: 18px; letter-spacing: 2px; margin-top: 12px; color: #2c2c2c; animation: blinkSoft 1.2s infinite; }
     @keyframes blinkSoft { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
     
-    /* Детские фото — всегда в одну строку, без прокрутки, чуть крупнее */
+    /* Детские фото — в одну строку без прокрутки, увеличенная рамка */
     .story { background: #ffffff; text-align: center; }
     .photos {
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 5vw;
-      flex-wrap: wrap;          /* резерв для очень узких экранов, но в строку */
+      flex-wrap: wrap;
       margin-bottom: 45px;
     }
     .photo {
       background: #fff;
-      padding: 1.5vw 1.5vw 2.5vw 1.5vw;
+      padding: 20px 20px 30px 20px;   /* увеличенная рамка */
       box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
       flex: 0 0 auto;
     }
     .photo img {
-      width: 40vw;
-      max-width: 300px;         /* немного увеличено */
+      width: 35vw;
+      max-width: 260px;
       height: auto;
       aspect-ratio: 1/1;
       object-fit: cover;
@@ -112,6 +114,7 @@
     .title { font-size: 28px; margin: 20px 0 16px; font-weight: 400; }
     .text { max-width: 560px; margin: 0 auto; font-size: 17px; line-height: 1.7; color: #3e3e3e; }
     
+    /* Родные и любимые — фото невесты без обрезки лица */
     .invite-block { background: #ffffff; text-align: center; }
     .frame {
       background: #fff;
@@ -123,7 +126,8 @@
     .frame img {
       width: 280px;
       height: 360px;
-      object-fit: cover;
+      object-fit: contain;      /* фото видно полностью, без обрезки */
+      background: #f9f9f9;      /* лёгкий фон на случай пустых областей */
       display: block;
     }
     .invite-block h2 { font-size: 38px; margin-bottom: 20px; font-weight: 400; }
@@ -311,8 +315,9 @@
     
     /* Адаптивность */
     @media (max-width: 680px) {
-      .photo img { max-width: 260px; }
-      .frame img { width: 220px; height: 280px; }
+      .photo { padding: 16px 16px 24px 16px; }
+      .photo img { max-width: 220px; }
+      .frame img { width: 240px; height: 320px; }
       .polaroid-card img { width: 140px; height: 140px; }
       .slide img { height: 320px; }
       .wedding-block .timer span { font-size: 40px; }
@@ -324,8 +329,9 @@
       .time { font-size: 28px; }
     }
     @media (max-width: 480px) {
-      .photo img { width: 45vw; max-width: 220px; }
-      .frame img { width: 180px; height: 240px; }
+      .photo { padding: 12px 12px 18px 12px; }
+      .photo img { max-width: 180px; }
+      .frame img { width: 200px; height: 260px; }
       .polaroid-card img { width: 120px; height: 120px; }
       .wedding-block .timer span { font-size: 32px; }
       .wedding-block .timer { gap: 15px; }
@@ -355,7 +361,7 @@
 <section class="story">
   <div class="photos">
     <div class="photo fade-img"><img src="1.jpeg" alt="Детское фото"></div>
-    <div class="photo fade-img"><img src="2.jpeg" alt="Детское фото 2"></div>
+    <div class="photo fade-img"><img src="2.png" alt="Детское фото 2"></div>
   </div>
   <div class="love fade-text">Т + А <span class="heart-icon">♡</span></div>
   <div class="title fade-text">Узнаете этих детишек?</div>
@@ -425,7 +431,7 @@
 <section class="dresscode-section">
   <h2 class="fade-text">ДРЕСС - КОД</h2>
   <div class="subtitle fade-text">dress-code</div>
-  <p class="fade-text">Мы будем рады, если вы поддержите атмосферу нашего дня, выбрав наряды в спокойных, благородных оттенках.</p>
+  <p class="fade-text">Мы будем рады, если вы поддержите атмосферу нашего дня, выбрав наряды в спокойных оттенках.</p>
 </section>
 
 <section class="details-section">
