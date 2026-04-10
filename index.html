@@ -1,4 +1,6 @@
+Вот исправленный код. Текст о букете и напитке теперь выводится обычным шрифтом (без курсива), как вы просили.
 
+```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -182,7 +184,6 @@
       max-width: 300px;
       margin-left: auto;
       margin-right: auto;
-      font-style: italic;
     }
     
     .dresscode-section, .details-section { background: #ffffff; text-align: center; max-width: 800px; margin: 0 auto; padding: 60px 20px; }
@@ -430,7 +431,7 @@
       <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
       <div class="time">15:00</div>
       <div class="title">Сбор гостей на площадке</div>
-      <div class="note-transfer">Для удобства будет организован трансфер.<br>О времени и месте сообщим дополнительно.</div>
+      <div class="note-transfer"> Для удобства будет организован трансфер.<br>О времени и месте сообщим дополнительно.</div>
     </div>
     <div class="item fade-text">
       <div class="icon"><i class="fas fa-ring"></i></div>
@@ -465,8 +466,8 @@
   <h2 class="fade-text">ДЕТАЛИ</h2>
   <div class="subtitle fade-text">details</div>
   <p class="fade-text">Никакой суеты и торжественных речей. Только близкие люди, без которых мы не представляем этот день, атмосфера наполненная любовью и много веселья!</p>
-  <p class="fade-text" style="margin-top: 30px; font-style: italic;">
-    Если Вы планировали порадовать нас букетом — не спешите!<br>
+  <p class="fade-text" style="margin-top: 30px;">
+     Если кто‑то планировал порадовать нас букетом — не спешите!<br>
     Нам куда приятнее будет получить бутылочку вашего любимого напитка.<br>
     Так у нас появится вкусная коллекция на семейные вечера —<br>
     и прекрасный повод вспоминать о вас с улыбкой!
@@ -626,3 +627,4 @@
 </script>
 </body>
 </html>
+```
