@@ -31,7 +31,6 @@
     section, .music, .rsvp, .contacts-block, .wedding-block { margin: 0; padding: 60px 20px; }
     .hero, .wedding-block { padding: 0; }
     
-    /* Анимация только текста и фото */
     .fade-text, .fade-img {
       opacity: 0;
       transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.6s ease;
@@ -65,35 +64,34 @@
       font-size: clamp(40px, 8vw, 100px); text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
       line-height: 1.1; font-weight: 400;
     }
-    /* Музыка */
+    
     .music { text-align: center; background: #ffffff; padding: 30px 20px; }
     .music button { background: transparent; border: none; font-size: 44px; cursor: pointer; color: #1e1e1e; transition: transform 0.2s; padding: 0; }
     .music button:hover { transform: scale(1.05); }
     .music-text { font-size: 18px; letter-spacing: 2px; margin-top: 12px; color: #2c2c2c; animation: blinkSoft 1.2s infinite; }
     @keyframes blinkSoft { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
     
-    /* История — детские фото в одну строку без переноса */
+    /* Детские фото — всегда в одну строку без прокрутки */
     .story { background: #ffffff; text-align: center; }
     .photos {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 40px;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      padding-bottom: 15px;
+      gap: 5vw;
+      flex-wrap: wrap;          /* на случай очень маленьких экранов — всё равно в строку */
       margin-bottom: 45px;
-      -webkit-overflow-scrolling: touch;
     }
     .photo {
       background: #fff;
-      padding: 12px 12px 20px 12px;
+      padding: 1.5vw 1.5vw 2.5vw 1.5vw;
       box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
-      flex-shrink: 0;
+      flex: 0 0 auto;
     }
     .photo img {
-      width: 260px;
-      height: 260px;
+      width: 35vw;
+      max-width: 260px;
+      height: auto;
+      aspect-ratio: 1/1;
       object-fit: cover;
       border-radius: 4px;
       display: block;
@@ -114,7 +112,6 @@
     .title { font-size: 28px; margin: 20px 0 16px; font-weight: 400; }
     .text { max-width: 560px; margin: 0 auto; font-size: 17px; line-height: 1.7; color: #3e3e3e; }
     
-    /* Родные и любимые — вертикальное прямоугольное фото */
     .invite-block { background: #ffffff; text-align: center; }
     .frame {
       background: #fff;
@@ -132,7 +129,6 @@
     .invite-block h2 { font-size: 38px; margin-bottom: 20px; font-weight: 400; }
     .invite-block p { max-width: 560px; margin: 0 auto; font-size: 17px; line-height: 1.7; color: #444; }
     
-    /* Календарь */
     .calendar-block { background: #ffffff; text-align: center; }
     .month { margin-bottom: 24px; font-size: 30px; font-weight: 400; }
     .weekdays { display: grid; grid-template-columns: repeat(7,1fr); max-width: 360px; margin: 0 auto 16px; font-size: 14px; font-weight: 500; color: #6b6b6b; }
@@ -145,7 +141,7 @@
     .calendar-date { margin-top: 32px; font-size: 30px; font-weight: 400; }
     .footer-text { margin-top: 24px; font-size: 16px; color: #4a4a4a; }
     
-    /* Место проведения — бежевый фон */
+    /* Бежевые блоки */
     .location { background: #c7b09b; color: #fff; text-align: center; }
     .location h2 { font-size: 44px; line-height: 1.2; font-weight: 400; }
     .location .sub { font-size: 32px; opacity: 0.9; margin-bottom: 35px; }
@@ -168,7 +164,6 @@
     .p1-wrap { --rot: -8deg; position: relative; top: -10px; }
     .p2-wrap { --rot: 8deg; position: relative; top: 15px; }
     
-    /* Тайминг дня — бежевый фон */
     .timing { background: #c7b09b; color: #fff; text-align: center; }
     .timing h2 { font-size: 44px; font-weight: 400; }
     .timing .sub { font-size: 32px; margin-bottom: 45px; opacity: 0.9; }
@@ -178,7 +173,6 @@
     .time { font-size: 32px; font-weight: 400; margin-bottom: 8px; }
     .timing .title { font-size: 22px; font-weight: 500; }
     
-    /* Дресс-код и детали */
     .dresscode-section, .details-section { background: #ffffff; text-align: center; max-width: 800px; margin: 0 auto; padding: 60px 20px; }
     .dresscode-section h2, .details-section h2 { font-size: 40px; margin-bottom: 12px; font-weight: 400; }
     .subtitle { font-size: 26px; color: #a0a0a0; margin-bottom: 28px; }
@@ -198,7 +192,6 @@
     .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #ccc; margin: 0 6px; cursor: pointer; }
     .dot.active { background: #8fa3b1; width: 12px; height: 12px; }
     
-    /* Таймер до свадьбы */
     .wedding-block {
       position: relative;
       height: 85vh;
@@ -260,7 +253,6 @@
       font-weight: 300;
     }
     
-    /* Контакты — бежевый фон */
     .contacts-block { background: #c7b09b; color: #ffffff; text-align: center; }
     .contacts-content { max-width: 450px; margin: 0 auto; }
     .contacts-block h2 { font-size: 44px; margin-bottom: 30px; font-weight: 400; }
@@ -278,7 +270,6 @@
     .love { font-style: italic; margin-bottom: 12px; font-size: 18px; }
     .names-sign { font-size: 44px; text-transform: capitalize; font-weight: 400; }
     
-    /* RSVP форма — бежевый фон */
     .rsvp { background: #c7b09b; color: #fff; text-align: center; }
     .rsvp .container { max-width: 580px; margin: 0 auto; }
     .rsvp h2 { font-size: 44px; margin-bottom: 10px; font-weight: 400; }
@@ -318,9 +309,8 @@
     }
     .rsvp button:hover { background: #fff; color: #c7b09b; }
     
-    /* Адаптивность */
     @media (max-width: 680px) {
-      .photo img { width: 200px; height: 200px; }
+      .photo img { max-width: 200px; }
       .frame img { width: 220px; height: 280px; }
       .polaroid-card img { width: 140px; height: 140px; }
       .slide img { height: 320px; }
@@ -333,7 +323,7 @@
       .time { font-size: 28px; }
     }
     @media (max-width: 480px) {
-      .photo img { width: 160px; height: 160px; }
+      .photo img { max-width: 160px; }
       .frame img { width: 180px; height: 240px; }
       .polaroid-card img { width: 120px; height: 120px; }
       .wedding-block .timer span { font-size: 32px; }
@@ -342,7 +332,7 @@
       .heart-number { width: 38px; height: 38px; }
       .heart-number i { font-size: 38px; }
       .heart-number span { font-size: 18px; }
-      .photos { gap: 20px; }
+      .photos { gap: 8vw; }
     }
   </style>
 </head>
@@ -434,7 +424,9 @@
 <section class="dresscode-section">
   <h2 class="fade-text">ДРЕСС - КОД</h2>
   <div class="subtitle fade-text">dress-code</div>
-  <p class="fade-text">Просим придерживаться спокойных оттенков в одежде.</p>
+  <p class="fade-text">Мы будем рады, если вы поддержите атмосферу нашего дня, выбрав наряды в спокойных, благородных оттенках.</p>
+  <p class="fade-text">Палитра вечера — нежные пастельные тона, приглушённые бежевые, серые, пыльно-розовые и кремовые цвета. Никакой кричащей яркости, только мягкая элегантность.</p>
+  <p class="fade-text">И конечно, захватите с собой удобную обувь для танцев — будет много музыки и веселья!</p>
 </section>
 
 <section class="details-section">
@@ -459,7 +451,6 @@
 <section class="rsvp">
   <div class="container">
     <h2 class="fade-text">АНКЕТА ГОСТЯ</h2>
-    <div class="subtitle fade-text">Rsvp</div>
     <p class="note fade-text">пожалуйста, подтвердите свое присутствие до 29.04.2026</p>
     <form id="rsvpForm" action="https://formspree.io/f/maqlzzyg" method="POST" class="fade-text">
       <label>Ваше имя и фамилия</label>
@@ -494,7 +485,6 @@
 </section>
 
 <script>
-  // Музыка
   const audio = document.getElementById('weddingAudio');
   const toggleBtn = document.getElementById('musicToggleBtn');
   function updateButtonIcon() {
@@ -507,9 +497,7 @@
   });
   updateButtonIcon();
   audio.addEventListener('ended', () => { if (audio.loop) audio.play(); });
-  audio.onerror = () => console.warn('Аудиофайл не найден. Проверьте путь к "Намек на нас.mp3"');
 
-  // Таймер до 14 мая 2026
   const weddingDate = new Date("2026-05-14T00:00:00").getTime();
   function updateWeddingTimer() {
     const now = new Date().getTime();
@@ -533,7 +521,6 @@
   setInterval(updateWeddingTimer, 1000);
   updateWeddingTimer();
 
-  // Календарь на май 2026 (выделено 14 число)
   function buildCalendar(year, month, highlightDay) {
     const firstDayOfMonth = new Date(year, month, 1);
     let startWeekday = firstDayOfMonth.getDay();
@@ -559,9 +546,8 @@
       container.appendChild(span);
     });
   }
-  buildCalendar(2026, 4, 14); // май — месяц 4 (0-based)
+  buildCalendar(2026, 4, 14);
 
-  // Анимация появления
   const animatedElements = document.querySelectorAll('.fade-text, .fade-img');
   const appearObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
