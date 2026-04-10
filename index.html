@@ -8,8 +8,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Montserrat', sans-serif;
@@ -85,7 +83,7 @@
     }
     .photo {
       background: #fff;
-      padding: 20px 20px 30px 20px;   /* увеличенная рамка */
+      padding: 20px 20px 30px 20px;
       box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
       flex: 0 0 auto;
     }
@@ -126,8 +124,8 @@
     .frame img {
       width: 280px;
       height: 360px;
-      object-fit: contain;      /* фото видно полностью, без обрезки */
-      background: #f9f9f9;      /* лёгкий фон на случай пустых областей */
+      object-fit: contain;
+      background: #f9f9f9;
       display: block;
     }
     .invite-block h2 { font-size: 38px; margin-bottom: 20px; font-weight: 400; }
@@ -182,7 +180,7 @@
     .subtitle { font-size: 26px; color: #a0a0a0; margin-bottom: 28px; }
     .dresscode-section p, .details-section p { font-size: 17px; line-height: 1.7; margin-bottom: 20px; }
     
-    /* Слайдер */
+    /* Слайдер (если понадобится) */
     .slider-section { background: #ffffff; max-width: 900px; margin: 0 auto; padding: 60px 20px; }
     .slider-container { position: relative; overflow: hidden; border-radius: 20px; box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
     .slider-wrapper { display: flex; transition: transform 0.4s ease; }
@@ -196,9 +194,10 @@
     .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #ccc; margin: 0 6px; cursor: pointer; }
     .dot.active { background: #8fa3b1; width: 12px; height: 12px; }
     
+    /* Таймер на полный экран */
     .wedding-block {
       position: relative;
-      height: 85vh;
+      height: 100vh;
       min-height: 500px;
       background: url('таймер.jpg') center/cover no-repeat;
       color: white;
@@ -215,16 +214,15 @@
       z-index: 1;
     }
     .wedding-block .content {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  padding: 50px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;    /* было space-between */
-  height: 100%;
-}
-
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 50px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
     .wedding-block h1 {
       margin-top: 30px;
       font-size: clamp(32px, 7vw, 48px);
@@ -233,16 +231,13 @@
       text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
     }
     .wedding-block .timer {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin-bottom: 0;           /* убрать лишний отступ */
-  flex-wrap: wrap;
-  flex: 1;                   /* растягивает блок, занимая доступное место */
-  align-items: center;       /* вертикальное центрирование внутри таймера */
-}
-
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 0;
+      flex-wrap: wrap;
+    }
     .wedding-block .timer div {
       text-align: center;
       background: none;
